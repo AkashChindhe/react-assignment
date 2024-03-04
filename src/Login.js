@@ -5,12 +5,11 @@ import Password from "./component/Password";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function App() {
+function Login() {
   const navigate = useNavigate();
 
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleMobileChange = (value) => {
     setMobileNumber(value);
@@ -20,38 +19,24 @@ function App() {
     setPassword(value);
   };
 
-  const handleConfirmPasswordChange = (value) => {
-    setConfirmPassword(value);
-  };
-
-  const handleRegister = () => {
-    // TODO: write code to handle registration procedute
+  const handleLogin = () => {
     const user = {
       mobileNumber,
       password,
     };
 
     console.log(user);
-    navigate("/confirmOtp");
+    navigate("/profile");
   };
 
   return (
     <div className="App">
-      <div
-        style={{
-          marginTop: "100px",
-        }}
-      >
+      <div>
         <MobileNumber value={mobileNumber} onChange={handleMobileChange} />
         <Password
           value={password}
           onChange={handlePasswordChange}
           label="Enter your password"
-        />
-        <Password
-          value={confirmPassword}
-          onChange={handleConfirmPasswordChange}
-          label="Confirm password"
         />
         <button
           style={{
@@ -61,13 +46,13 @@ function App() {
             backgroundColor: "#2980B9",
             color: "white",
           }}
-          onClick={handleRegister}
+          onClick={handleLogin}
         >
-          Register
+          Login
         </button>
       </div>
     </div>
   );
 }
 
-export default App;
+export default Login;
